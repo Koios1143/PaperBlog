@@ -1,0 +1,76 @@
+<template><div><h1 id="_2024-tsmc-careerhack-心得" tabindex="-1"><a class="header-anchor" href="#_2024-tsmc-careerhack-心得" aria-hidden="true">#</a> 2024 TSMC CareerHack 心得</h1>
+<p>前幾天去參加了 2024 台積電的黑客松，大概是人生第一次走進台積辦公室。</p>
+<p>這場比賽是一組四人的比賽，前面有一個預賽，需要解出一些簡單的演算法題目。每個人題目會不太相同，但基本上都不會太難，簡單的 Sort、Greedy、Graph、DP。</p>
+<h2 id="比賽題目" tabindex="-1"><a class="header-anchor" href="#比賽題目" aria-hidden="true">#</a> 比賽題目</h2>
+<p>我們這一組拿到的是 <strong>AI 看圖說故事</strong> 的題目，基本上就是會有一些工地的照片，希望我們可以去找到</p>
+<ul>
+<li>照片中有多少人</li>
+<li>有多少人有戴安全帽</li>
+<li>有多少人沒戴安全帽</li>
+<li>安全帽是甚麼顏色</li>
+</ul>
+<p>有些圖片上面會有 warning message，所以會有額外的提問</p>
+<ul>
+<li>warning message 寫了什麼</li>
+<li>有沒有任何人違反了 warning message 的敘述</li>
+</ul>
+<p>基本上他們期待我們會運用 LLM 去解決這個問題，TSMC 也有先提供了一些資源</p>
+<ul>
+<li>GCP 運算及儲存資源
+<ul>
+<li>L4 GPU (24 GB RAM) x2</li>
+<li>100 GB CPU RAM</li>
+<li>100 GB Disk</li>
+</ul>
+</li>
+<li>100 GB Bucket storage</li>
+<li>LLaVA pretrained model</li>
+<li>LLaVA finetune script</li>
+<li>一些 Datasets</li>
+</ul>
+<h2 id="比賽過程" tabindex="-1"><a class="header-anchor" href="#比賽過程" aria-hidden="true">#</a> 比賽過程</h2>
+<p>比賽會在正式開賽前一周公布題目，也開放資源，因此不少組別在實際進到 HackDay 前就已經做了不少，也有聽說有部分的組別 HackDay 就是拿來做簡報，也是頗有趣。</p>
+<p>雖然說是黑客松，不過場地因為是辦公室，所以晚上 6 點就要回家，隔天早上 9 點半再來報到，實際上在辦公室的時間沒有想像中的還要多。</p>
+<p>一開始進去到辦公室的感覺就很舒服，可以自己使用的免費咖啡機、電動的升降桌、超級舒服的人體工學椅、超大的雙螢幕。</p>
+<p>只能說在設備上直接贏了。</p>
+<p>中間還有提供午餐、點心、飲料，都相當地好吃，覺得很開心。</p>
+<p>我們這一組在 HackDay 之前的想法是先去做一些 paper research，去調查看看有哪些其他還不錯的 LLM 可以嘗試。</p>
+<p>雖然說在比賽之前我們的想法是，如果只會問那些固定的問題的話，那我們不要用 LLM，用其他 CV 的 model 去解決也許會比 LLM 還要強許多，不過寄信去詢問之後得到希望還是使用到 LLM 的回覆，所以我們後續的方向都著重在 LLM 以及 Fine-tune 的研究。</p>
+<p>大致上大家看過了幾個 LLM</p>
+<ul>
+<li>miniGPT4、miniGPT4_v2</li>
+<li>BLIP、InstructBLIP</li>
+<li>Flamingo</li>
+</ul>
+<p>Fine-tune 的部分主要是參考各個 paper 自己的 fine-tune 說明，其他的大概就是 proxy-tuning。</p>
+<p>其實讀 paper 都覺得很好理解，也想說難得有不錯的運算資源，是也可以都 train 看看結果如何。不過理想很美好，現實很骨感。</p>
+<p>實際上我們挑了最小的 13B 模型，丟進去訓練還是出現 <code v-pre>CUDA out of memory</code>，估計也是沒救，最後只有 LLaVA 活下來，所以我們後續就主要專攻 LLaVA。</p>
+<h3 id="datasets-處理" tabindex="-1"><a class="header-anchor" href="#datasets-處理" aria-hidden="true">#</a> Datasets 處理</h3>
+<p>我們在 Dataset 處理上花了不少的時間。</p>
+<p>在提供的 5 份 datasets 當中，我們發現其中兩份都是教室的監視器錄影畫面，我們想說這裡根本沒人戴安全帽，超級懷疑這個 dataset 的實用程度。</p>
+<p>此外，其他的 dataset 也是有些包含浮水印，或是看起來安全帽是後製貼上去的，彩度跟亮度跟環境有些落差。</p>
+<p>我們也發現到說在回答顏色的那一題，模型會傾向回答 <code v-pre>None</code>，但實際上有顏色才對，所以在前面加上了一些 prefix string，試圖讓 LLM 吐出更多結果。</p>
+<p>實驗上為了檢測拿掉兩個 datasets 以及加上 prefix string 是否有比較好，交叉做了一些 fintune，也寫了一個評分程式去評估好壞。</p>
+<h3 id="答案產出" tabindex="-1"><a class="header-anchor" href="#答案產出" aria-hidden="true">#</a> 答案產出</h3>
+<p>我們最後決定要把多個模型的輸出拿去做類似 Bagging 的操作。</p>
+<p>簡單來說，這七個問題，我們相信那些回答分數比較高的模型可以做得比較好，所以就讓他專門來回答這個問題。</p>
+<p>如此一來就可以得到完整的輸出結果，也可以盡可能至少在 validation set 上看起來很棒 ouo</p>
+<h3 id="結果" tabindex="-1"><a class="header-anchor" href="#結果" aria-hidden="true">#</a> 結果</h3>
+<p>最後在 private set 上的分數大概是 <code v-pre>59.7</code></p>
+<ul>
+<li>加權分數: 44.5/70</li>
+<li>Bonus: 2.7/5</li>
+</ul>
+<p>其實不太好啦XD</p>
+<h2 id="報告" tabindex="-1"><a class="header-anchor" href="#報告" aria-hidden="true">#</a> 報告</h2>
+<p>其實 TSMC 的大家都很友善，報告期間也都會跟我們分享他們覺得在每個地方有哪些比較好的做法也許可以嘗試看看。</p>
+<p>此外，其他組的報告我們也可以透過實時的直播去看，認識到其他組都用了怎樣的方法去解決。</p>
+<p>印象中有人用了 YOLO，也有人套了 OCR，把輸出結果套入 LLM 的輸入。有些組別完成度很高，甚至連 FrontEnd 都完成了，相當佩服。</p>
+<h2 id="總結" tabindex="-1"><a class="header-anchor" href="#總結" aria-hidden="true">#</a> 總結</h2>
+<p>我覺得這次到 TSMC 的比賽經驗很不錯，也讓我認識到 TSMC 的 IT team，跟過去自己想像當中在無塵室裏面處理晶圓的那種印象是完全不同，我也能感受到每個員工對我們都很友善。</p>
+<p>當時有遇到問題去找他們的時候都可以得到即時的 feedback，也能感受到他們對我們的提問的重視，是一個讓人很喜歡的環境。</p>
+<p>這次大概是第一次實際碰 LLM，過去基本上就是看過 paper，讀的時候都覺得嗯嗯嗯很有道理，不過實際上在實作的時候光是硬體的資源可能就是一大障礙，也就很難往下一步去發展。</p>
+<p>但總結來說這次有還蠻有趣的體驗，感到很開心，也很期待未來也還有機會可以繼續了解和開發 LLM。</p>
+</div></template>
+
+
