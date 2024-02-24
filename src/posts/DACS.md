@@ -7,6 +7,7 @@ tag:
   - Domain Adaption
   - Computer Vision
   - WACV
+author: Koios
 ---
 
 # DACS: Domain Adaptation via Cross-domain Mixed Sampling

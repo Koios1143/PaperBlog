@@ -6,6 +6,7 @@ tag:
   - Paper Read
   - Reinforcement Learning
   - ICLR
+author: Koios
 ---
 
 # Noisy Networks for Exploration

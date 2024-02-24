@@ -6,6 +6,7 @@ tag:
   - Paper Read
   - Reinforcement Learning
   - ICML
+author: Koios
 ---
 
 # Agent57: Outperforming the Atari Human Benchmark

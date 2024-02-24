@@ -6,6 +6,7 @@ tag:
   - Paper Read
   - Reinforcement Learning
   - NeurIPS
+author: Koios
 ---
 
 # Playing Atari with Deep Reinforcement Learning

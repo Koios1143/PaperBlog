@@ -50,7 +50,7 @@ export default hopeTheme({
     },
   },
 
-  pageInfo: ["Original", "Date", "PageView", "ReadingTime", "Category", "Tag"],
+  pageInfo: ["Author", "Original", "Date", "PageView", "ReadingTime", "Category", "Tag"],
   
   metaLocales: {
     editLink: "Edit this page on GitHub"
