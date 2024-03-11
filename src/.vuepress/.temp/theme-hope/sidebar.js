@@ -1,1 +1,1 @@
-export const sidebarData = {"/posts/":["Agent57","DACS","Noisy Networks for Exploration","DQN"]};
+export const sidebarData = {"/posts/":["Agent57","DACS","DAFormer","Noisy Networks for Exploration","DQN","ProDA"]};

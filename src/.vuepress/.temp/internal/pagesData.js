@@ -7,10 +7,14 @@ export const pagesData = {
   "v-3caeec67": () => import(/* webpackChunkName: "v-3caeec67" */"/root/paper_blog/src/.vuepress/.temp/pages/posts/Agent57.html.js").then(({ data }) => data),
   // path: /posts/DACS.html
   "v-c0336012": () => import(/* webpackChunkName: "v-c0336012" */"/root/paper_blog/src/.vuepress/.temp/pages/posts/DACS.html.js").then(({ data }) => data),
+  // path: /posts/DAFormer.html
+  "v-6fdb6976": () => import(/* webpackChunkName: "v-6fdb6976" */"/root/paper_blog/src/.vuepress/.temp/pages/posts/DAFormer.html.js").then(({ data }) => data),
   // path: /posts/DQN.html
   "v-32d63a0d": () => import(/* webpackChunkName: "v-32d63a0d" */"/root/paper_blog/src/.vuepress/.temp/pages/posts/DQN.html.js").then(({ data }) => data),
   // path: /posts/Noisy%20Networks%20for%20Exploration.html
   "v-5b18c8c4": () => import(/* webpackChunkName: "v-5b18c8c4" */"/root/paper_blog/src/.vuepress/.temp/pages/posts/Noisy Networks for Exploration.html.js").then(({ data }) => data),
+  // path: /posts/ProDA.html
+  "v-0fd9e004": () => import(/* webpackChunkName: "v-0fd9e004" */"/root/paper_blog/src/.vuepress/.temp/pages/posts/ProDA.html.js").then(({ data }) => data),
   // path: /404.html
   "v-3706649a": () => import(/* webpackChunkName: "v-3706649a" */"/root/paper_blog/src/.vuepress/.temp/pages/404.html.js").then(({ data }) => data),
   // path: /posts/
@@ -39,6 +43,8 @@ export const pagesData = {
   "v-cc78423a": () => import(/* webpackChunkName: "v-cc78423a" */"/root/paper_blog/src/.vuepress/.temp/pages/tag/computer-vision/index.html.js").then(({ data }) => data),
   // path: /tag/wacv/
   "v-2958c584": () => import(/* webpackChunkName: "v-2958c584" */"/root/paper_blog/src/.vuepress/.temp/pages/tag/wacv/index.html.js").then(({ data }) => data),
+  // path: /tag/cvpr/
+  "v-2848ab8c": () => import(/* webpackChunkName: "v-2848ab8c" */"/root/paper_blog/src/.vuepress/.temp/pages/tag/cvpr/index.html.js").then(({ data }) => data),
   // path: /tag/neurips/
   "v-468b3b36": () => import(/* webpackChunkName: "v-468b3b36" */"/root/paper_blog/src/.vuepress/.temp/pages/tag/neurips/index.html.js").then(({ data }) => data),
   // path: /tag/iclr/

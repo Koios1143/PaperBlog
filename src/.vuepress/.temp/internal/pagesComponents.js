@@ -9,10 +9,14 @@ export const pagesComponents = {
   "v-3caeec67": defineAsyncComponent(() => import(/* webpackChunkName: "v-3caeec67" */"/root/paper_blog/src/.vuepress/.temp/pages/posts/Agent57.html.vue")),
   // path: /posts/DACS.html
   "v-c0336012": defineAsyncComponent(() => import(/* webpackChunkName: "v-c0336012" */"/root/paper_blog/src/.vuepress/.temp/pages/posts/DACS.html.vue")),
+  // path: /posts/DAFormer.html
+  "v-6fdb6976": defineAsyncComponent(() => import(/* webpackChunkName: "v-6fdb6976" */"/root/paper_blog/src/.vuepress/.temp/pages/posts/DAFormer.html.vue")),
   // path: /posts/DQN.html
   "v-32d63a0d": defineAsyncComponent(() => import(/* webpackChunkName: "v-32d63a0d" */"/root/paper_blog/src/.vuepress/.temp/pages/posts/DQN.html.vue")),
   // path: /posts/Noisy%20Networks%20for%20Exploration.html
   "v-5b18c8c4": defineAsyncComponent(() => import(/* webpackChunkName: "v-5b18c8c4" */"/root/paper_blog/src/.vuepress/.temp/pages/posts/Noisy Networks for Exploration.html.vue")),
+  // path: /posts/ProDA.html
+  "v-0fd9e004": defineAsyncComponent(() => import(/* webpackChunkName: "v-0fd9e004" */"/root/paper_blog/src/.vuepress/.temp/pages/posts/ProDA.html.vue")),
   // path: /404.html
   "v-3706649a": defineAsyncComponent(() => import(/* webpackChunkName: "v-3706649a" */"/root/paper_blog/src/.vuepress/.temp/pages/404.html.vue")),
   // path: /posts/
@@ -41,6 +45,8 @@ export const pagesComponents = {
   "v-cc78423a": defineAsyncComponent(() => import(/* webpackChunkName: "v-cc78423a" */"/root/paper_blog/src/.vuepress/.temp/pages/tag/computer-vision/index.html.vue")),
   // path: /tag/wacv/
   "v-2958c584": defineAsyncComponent(() => import(/* webpackChunkName: "v-2958c584" */"/root/paper_blog/src/.vuepress/.temp/pages/tag/wacv/index.html.vue")),
+  // path: /tag/cvpr/
+  "v-2848ab8c": defineAsyncComponent(() => import(/* webpackChunkName: "v-2848ab8c" */"/root/paper_blog/src/.vuepress/.temp/pages/tag/cvpr/index.html.vue")),
   // path: /tag/neurips/
   "v-468b3b36": defineAsyncComponent(() => import(/* webpackChunkName: "v-468b3b36" */"/root/paper_blog/src/.vuepress/.temp/pages/tag/neurips/index.html.vue")),
   // path: /tag/iclr/
