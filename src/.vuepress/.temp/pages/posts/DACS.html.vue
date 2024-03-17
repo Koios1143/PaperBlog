@@ -10,7 +10,7 @@
 <img src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*m39LhMzvVjjNLd7EwYDimA.png" width=500>
 </center>
 <blockquote>
-<p>Image from <a href="/DACS/medium01.png" target="_blank" rel="noopener noreferrer">Medium<ExternalLinkIcon/></a></p>
+<p>Image from <a href="/DACS/medium01.png">Medium</a></p>
 </blockquote>
 <p>所謂的 Domain 就是用來描述一群資料他們的分布狀況。</p>
 <p>Domain Adaption 的目標是把兩個不同分佈的 Domain (Source Domain 以及 Target Domain) 投射到同一個平面上，使得同類型的資料會相近，反之則相遠。</p>
@@ -19,7 +19,7 @@
 <img src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*jS41A2LpF1dw0GDX2ip-7A.png" width=500>
 </center>
 <blockquote>
-<p>Image from <a href="/DACS/medium02.png" target="_blank" rel="noopener noreferrer">Medium<ExternalLinkIcon/></a></p>
+<p>Image from <a href="/DACS/medium02.png">Medium</a></p>
 </blockquote>
 <p>不過這種情況下一個直覺的問題是，在 虛擬世界(Source Domain) 上也許我們能夠對各種物件去做標記 label，但是對於真實世界(Target Domain)往往會有許多我們沒有的 label、環境與虛擬世界有差距，這種差距被描述為 Domain Shift。當兩個 Domain 相差過大，Domain Shift 過高，就會導致單純在 Source Domain 上訓練的模型難以直接 apply 到 Target Domain 上。</p>
 <p>因此，Domain Adaption 想解決的就是盡可能地將 Domain Shift 降低，讓我們得以用較低的成本在虛擬環境中訓練模型，然後應用在真實的環境當中。</p>
