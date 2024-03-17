@@ -14,10 +14,10 @@ author: Xavier
 
 ## Basic Information
 - Alex Krizhevsky, Ilya Sutskever, Geoffrey E. Hinton @ University of Toronto
-- 2012 NeurlIPS
+- 2012 NeurIPS
 
 ## 問題描述
-這是一篇將Deep Learning(深度學習)與Convolutional Neural Networks(卷積神經網路，以下簡稱CNN)運用在Computer Vision(計算機視覺)領域的開拓性論文。作者們train了一個Deep Convolutional Neural Network來分類ImageNet LSVRC-2010資料集中的120萬張高解析度圖像，並得到了相較前人方法顯著優異許多的表現。
+這是一篇將Deep Learning(深度學習)與Convolutional Neural Networks(卷積神經網路，以下簡稱CNN)運用在Computer Vision(計算機視覺)領域的開拓性論文。作者們train了一個Deep Convolutional Neural Network來分類ImageNet ILSVRC-2010資料集中的120萬張高解析度圖像，並得到了相較前人方法顯著優異許多的表現。
 
 ## Related Works
 - Softmax function
@@ -199,7 +199,7 @@ AlexNet共使用兩張GTX 580 3GB GPU，訓練了約5~6天，經過了約90個cy
 
 ### Qualitative Evaluation
 <center>
-<img src="/AlexNet/GPU1_vs_GPU2.png" width=800>
+<img src="/AlexNet/GPU1_vs_GPU2.png" width=400>
 </center>
 </br>
 
